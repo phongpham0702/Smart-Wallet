@@ -1,0 +1,95 @@
+
+    <div class="container" id="adminViewAccountDetail" >
+        <a
+    id ="backToAdminMain"
+    href="/admin/"
+    style="display: block; 
+    color:white; 
+    background-color:black; 
+    border-radius:10px;
+    width:150px;
+    text-decoration:none;
+    padding:0.5rem"
+  >⬅ Về trang chính</a>
+        <div class="information-body">
+            <div>
+                <div>
+                    <h4>Thông tin người dùng</h4>
+                    <hr>
+                    <div class="content">
+                        <div>
+                            <p><span class="info-title">Tài khoản:</span> {{username}}</p>
+                            <p><span class="info-title">Họ tên:</span> {{fullName}}</p>
+                            <p><span class="info-title">Ngày sinh:</span> {{dateOfBirth}}</p>
+                            <p><span class="info-title">Trạng thái:</span> Chờ duyệt</p>
+                        </div>
+                        <div style="padding-right: 1rem;">
+                            <p><span class="info-title">Số điện thoại:</span> {{phoneNumber}}</p>
+                            <p><span class="info-title">Địa chỉ:</span> {{address}}</p>
+                            <p><span class="info-title">Email:</span> {{email}}</p>
+                            <p><span class="info-title">Ngày tạo:</span> {{createAt}}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="padding-top: 1.5rem;">
+                    <h4>Ảnh 2 mặt chứng minh nhân dân</h4>
+                    <hr>
+                    <div class="content">
+                        <img src="{{backIdImage}}" alt="front-ID">
+                        <img src="{{fontIdImage}}" alt="back-ID">
+                    </div>
+                </div>
+
+                <div style="padding-top: 1.5rem;">
+                    <hr>
+                    <div style="text-align: center;color: red;font-weight: 700; margin:2rem auto;">{{message}}</div>
+                    <div class="content" style="padding-top:0.5rem;">
+                        {{#if ispending}}
+
+                            <button class="btn btn-success" data-bs-toggle="modal"  data-bs-target="#confirmModal-{{username}}">Duyệt</button> 
+                            <button class="btn btn-danger">Hủy</button>
+                            <button class="btn btn-warning">Thêm thông tin</button>
+                        {{/if}}
+                         
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+     <div
+            class="modal pending-modal fade"
+            id="confirmModal-{{username}}"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <form action="/admin/activated/{{username}}" method="POST">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Xác nhận</h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    Xác nhận duyệt người dùng {{username}}
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                    >Đóng</button>
+                    <button type="submit" class="btn btn-primary" >Duyệt</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>

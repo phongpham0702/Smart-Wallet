@@ -1,0 +1,100 @@
+<div class="pending-container" id="pending">
+   <a
+    id ="backToAdminMain"
+    href="/admin/"
+    style="display: block; 
+    color:white; 
+    background-color:black; 
+    border-radius:10px;
+    width:150px;
+    text-decoration:none;
+    padding:0.5rem"
+  >⬅ Về trang chính</a>
+  <div class="pending-title">
+    <p class="text-title">
+      Danh sách yêu cầu rút tiền chờ được duyệt
+    </p>
+  </div>
+
+  <div class="toolSearchBar">
+    <form id="searchPendingData">
+      <div class="search-bar-item">
+        <div class="search-item-title">
+          <label for="byID">Tìm kiếm giao dịch</label>
+        </div>
+        <label  for="byID" class="searchInput" style="display:flex; align-items:center">
+          <i class="bi bi-search" style="margin-right: 4px;"></i>
+          <input type="text" id="byID" name="ID" placeholder="Nhập mã người dùng" style="width: 100%;">
+        </label>
+      </div>
+      <div class="search-bar-item">      
+        <div>
+          <label for="from" class="search-item-title">Từ</label>
+        </div>
+        <input type="date" id="from" name="from" class="searchInput">    
+      </div>
+      <div class="search-bar-item">
+          <div>
+            <label for="to" class="search-item-title">Đến</label>
+          </div>
+          <input type="date" id="to" name="to" class="searchInput">
+      </div>
+      <div class="search-bar-item" style="width: 220px;">
+          <div>
+            <label for="amount" class="search-item-title">Số tiền: <span id="amountDisplay" style="font-size: 14px;">Mọi số tiền</span></label>
+          </div>
+          <input type="range" list="amountmarks" id="amount" name="amount" class="searchInput" min="0" max="100" step="1" value="0" oninput="setAmountValue(this);" style="padding: 0;">
+          <datalist id="amountmarks">
+            <option value="0"></option>
+            <option value="10"></option>
+            <option value="20"></option>
+            <option value="30"></option>
+            <option value="40"></option>
+            <option value="50"></option>
+            <option value="60"></option>
+            <option value="70"></option>
+            <option value="80"></option>
+            <option value="90"></option>
+            <option value="100"></option>
+          </datalist>
+      </div>  
+      <div class="btn-search-and-reset">
+        <button class="btn btn-info" type="button" style="margin-right: 8px;" onclick="searchPendingTransaction();">Tìm kiếm</button>
+        <button class="btn btn-secondary" type="reset" value="0" onclick="setAmountValue(this)">Làm mới</button>
+      </div>
+    </form>
+  </div>
+  <div class="dataTable">
+      <table class="table" style="margin: 0;">
+      <thead>
+        <tr>
+          <th scope="col">Mã giao dịch</th>
+          <th scope="col">Mã người thực hiện</th>
+          <th scope="col">Ngày giao dịch</th>
+          <th scope="col">Số tiền</th>
+          <th scope="col">Trạng thái</th>       
+        </tr>
+      </thead>
+      <tbody id="transactionData">
+          {{#each pendingTransaction}}
+          <tr onclick="window.location.href =`/admin/transactionApproval/withdraw/{{this._id}}`;">
+            <td>{{this._id}}</td>
+            <td>{{this.userID}}</td>
+            <td>{{this.transactionDate}}</td>
+            <td>{{this.transactionAmount}}</td>
+            <td>{{this.status}}</td>
+          </tr>                
+        {{/each}}  
+        
+      </tbody>
+    </table>
+    <div class="tableNotification">
+      {{#if noData.status}}
+        <div style="color:#000; padding-top: 0.5rem;">{{noData.msg}}</div>
+      {{/if}}
+    </div>
+  </div>
+  
+</div>
+
+<!-- Modal -->

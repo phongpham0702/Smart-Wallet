@@ -1,0 +1,81 @@
+<div class="first-row">
+
+  <div class="first-panel">
+
+    <!-- balance display -->
+    <div class="balance-display-content">
+      <p class="custome-header-1">Số dư của bạn</p>
+      <p class="balance-font">{{balance}}</p>
+    </div>
+    
+      <div class="user-basic-info">
+        <div class="mr-1">
+          <p class="custome-text-1 mb-1">TEN NGUOI DUNG</p>
+          <span> {{user.fullName}} </span>
+        </div>
+
+        <div>
+          <p class="custome-text-1 mb-1">ID TAI KHOAN</p>
+          <span>{{user.username}} </span>
+        </div>
+      </div>
+    
+  </div>
+
+  <!-- lastest transaction display -->
+  <div class="second-panel">
+    <div class="custome-header">Giao dịch gần đây</div>
+    <div class="lastest-transaction-display">
+      <table class="transaction-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Loại GD</th>
+              <th>Ngày</th>
+              <th>Số tiền</th>
+              <th>Trạng thái</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="icon">
+                <img src="images/transaction_Icons/icons8-deposit-100.png" alt="" />
+              </td>
+              <td class="type">Deposit</td>
+              <td class="date">Sep 11, 2022</td>
+              <td>+100,000 VND</td>
+              <td class="status-success">Success</td>
+            </tr>
+
+            <tr>
+              <td class="icon">
+                <img src="images/transaction_Icons/icons8-deposit-100.png" alt=""/>
+              </td>
+              <td class="type">Deposit</td>
+              <td class="date">Sep 11, 2022</td>
+              <td>+100,000 VND</td>
+              <td class="status-success">Success</td>
+            </tr>
+
+            <tr>
+              <td class="icon">
+                <img src="images/transaction_Icons/icons8-withdraw-100.png" alt=""/>
+              </td>
+              <td class="type">Withdraw</td>
+              <td class="date">Sep 11, 2022</td>
+              <td>+100,000 VND</td>
+              <td class="status-fail">Fail</td>
+            </tr> 
+
+          </tbody>
+      </table>
+      </div>
+  </div>
+</div>
+
+  <div class="second-row">
+      <canvas id="userMonthlyFluctuations" style="box-shadow: rgb(150,150,150) 0px 5px 10px 3px;" ></canvas>
+  </div>
+
+        

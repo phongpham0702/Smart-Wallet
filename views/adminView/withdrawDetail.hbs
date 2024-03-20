@@ -1,0 +1,122 @@
+  <div class="container" id="adminViewAccountDetail" style="transform:translateY(20%);">
+    <a
+    id ="backToAdminMain"
+    href="/admin/"
+    style="display: block; 
+    color:white; 
+    background-color:black; 
+    border-radius:10px;
+    width:150px;
+    text-decoration:none;
+    padding:0.5rem"
+  >⬅ Về trang chính</a>
+        <div class="information-body">
+            <div>
+                <div>
+                    <h4>Thông tin giao dịch</h4>
+                    <hr>
+                    <div class="content">
+                        <div>
+                            <p><span class="info-title">Mã giao dịch:</span> {{pendingTransaction._id}}</p>
+                            <p><span class="info-title">Người thực hiện:</span> {{pendingTransaction.userID}}</p>
+                            <p><span class="info-title">Loại giao dịch:</span> Rút tiền</p>
+                            <p><span class="info-title">Ngày giao dịch:</span> {{pendingTransaction.transactionDate}}</p>
+                        </div>
+                        <div style="padding-right: 1rem;">
+                            <p><span class="info-title">Số tiền:</span> {{pendingTransaction.transactionAmount}}</p>
+                            <p><span class="info-title">Phí giao dịch:</span> {{pendingTransaction.transactionFee}}</p>   
+                            <p><span class="info-title">Trạng thái:</span> {{pendingTransaction.status}}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="padding-top: 1.5rem;">
+                    <hr>
+                    <div style="text-align: center;color: red;font-weight: 700; margin:2rem auto;">{{message}}</div>
+                    <div class="content" style="padding-top:0.5rem;">     
+                        <button class="btn btn-success" data-bs-toggle="modal"  data-bs-target="#confirmModal-{{pendingTransaction._id}}">Duyệt</button>        
+                        <button class="btn btn-danger" data-bs-toggle="modal"  data-bs-target="#cancelModal-{{pendingTransaction._id}}">Từ chối</button>                       
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+     {{! Confirm modal }}
+<div
+class="modal pending-modal fade"
+id="confirmModal-{{pendingTransaction._id}}"
+tabindex="-1"
+aria-labelledby="exampleModalLabel"
+aria-hidden="true"
+>
+    <form action="/admin/transaction/withdraw/accepted" method="POST">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Xác nhận duyệt giao dịch</h5>
+            <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+            ></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" name="userID" value="{{pendingTransaction.userID}}">
+                <input type="hidden" name="tranDate" value="{{pendingTransaction.transactionDate}}">
+                <input type="hidden" name="tranAmount" value="{{pendingTransaction.transactionAmount}}">
+                <input type="hidden" name="tranFee" value="{{pendingTransaction.transactionFee}}">
+                <input type="hidden" name="tranStatus" value="{{pendingTransaction.status}}">
+                <input type="hidden" name="transactionID" value="{{pendingTransaction._id}}">
+                Xác nhận duyệt giao dịch <strong>{{pendingTransaction._id}}</strong> ? 
+            </div>
+            <div class="modal-footer">
+            <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+            >Hủy</button>
+            <button type="submit" class="btn btn-primary">Xác nhận</button>
+            </div>
+        </div>
+        </div>
+    </form>
+</div>
+
+ <div
+            class="modal pending-modal fade"
+            id="cancelModal-{{pendingTransaction._id}}"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <form action="#">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Cancel Modal</h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    <input type="hidden" name="transactionID" value="{{pendingTransaction._id}}">
+                    Xác nhận hủy giao dịch <strong>{{pendingTransaction._id}}</strong> ? 
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                    >Đóng</button>
+                    <button type="submit" class="btn btn-danger">Hủy</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>

@@ -1,0 +1,100 @@
+<div class="container">
+
+  <form action="/transfer" id="userFunctionForm" method="POST">
+    <h2>Transfer</h2>
+    <div class="form-content">
+      <div class="user__form__icon">
+        <img src="/images/userFormIcon/transfer.png" />
+
+      </div>
+      <div class="form-group">
+        <label for="receiverPhoneNumber">Số điện thoại:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="receiverPhoneNumber"
+          placeholder="Nhập số điện thoại người nhận"
+          name="receiverPhoneNumber"
+          required
+          oninput="getUserNameThroughtPhoneNum(this.value);"
+          maxlength="10"
+        />
+
+      </div>
+      <div class="form-group" style="display: none;">
+        <label>Tên người nhận:</label>
+        <input
+          type="text"
+          class="form-control"
+          name="receiverName"
+          required
+          disabled
+        />
+
+      </div>
+
+      <div class="form-group">
+        <label for="amount">Số tiền:</label>
+        <input
+          type="number"
+          class="form-control"
+          id="amount"
+          name="amount"
+          placeholder="Nhập số tiền cần chuyển"
+          oninput="withdrawFee(this.value)"
+        />
+        <div style="color: red;font-weight: 300;font-size:14px">*Phí rút chuyển
+          khoản là 5%</div>
+        <span
+          id="withdrawFeeValue"
+          style="color: red;font-weight: 300;font-size:14px"
+        ></span>
+      </div>
+
+      <div class="form-group" style="margin-top: 0px;">
+        <label for="note">Ghi chú:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="note"
+          name="note"
+          placeholder="Ghi chú của bạn"
+          value="{{{preNote}}}"
+        />
+      </div>
+      <div class="form-group" style="margin-top: 5px;">
+        <label>Người chịu phí</label>
+        <div style="display: flex; align-items:center; flex-direction:row">
+          <label for="sender">Người gửi:</label>
+          <input
+            type="radio"
+            id="sender"
+            name="bearer"
+            value="0"
+            checked
+            style="width:unset;margin-left:5px"
+          />
+        </div>
+        <div style="display: flex; align-items:center; flex-direction:row">
+          <label for="receiver">Người người nhận:</label>
+          <input
+            type="radio"
+            id="receiver"
+            name="bearer"
+            value="1"
+            style="width:unset;margin-left:5px"
+          />
+        </div>
+      </div>
+      {{#if error.isError}}
+        <div class="invalid-feedback">{{{error.errorMessage}}}</div>{{/if}}
+      <div class="option">
+        <a href="/" class="btn btn-secondary">Trở lại</a>
+        <button type="submit" class="btn btn-primary">Chuyển tiền</button>
+      </div>
+
+    </div>
+
+  </form>
+
+</div>

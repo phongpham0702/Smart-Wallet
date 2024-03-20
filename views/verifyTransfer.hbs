@@ -1,0 +1,57 @@
+<div class="cont">
+    <div class="entercode">
+        <form action="verifyTransfer" method="POST" class="OTP_Form">
+            <input type="hidden" value="" type="text" id="fullOTP" name="fullOTP" />
+            <div class="title-Verify">
+                <h3>Xác thực OTP chuyển tiền</h3>
+            </div>
+            <div class="logo_entercode">
+                <img width="100px" src="/images/logo.png" alt="logo" srcset="" />
+            </div>
+            <div class="describe" style="text-align: center;">
+                <p>Mã OTP đã được gửi đến <br><span style="color: aqua;">{{receiveOTPEmail}}</span></p>
+            </div>
+            <div class="countdown-box">
+                <div class="timer">Mã OTP sẽ hết hạn trong
+                    <br /><span class="time" data-time="{{expireTime}}"></span>
+                </div>
+            </div>
+            <div class="code">
+                <div class="code-item">
+                    <input type="text" id="otp1" name="otp1" maxlength="1" class="optinp"
+                        onkeydown="focusOTP(event,'','otp1','otp2')" />
+                </div>
+                <div class="code-item">
+                    <input type="text" id="otp2" name="otp2" maxlength="1" class="optinp"
+                        onkeydown="focusOTP(event,'otp1','otp2','otp3')" disabled />
+                </div>
+                <div class="code-item">
+                    <input type="text" id="otp3" name="otp3" maxlength="1" class="optinp"
+                        onkeydown="focusOTP(event,'otp2','otp3','otp4')" disabled />
+                </div>
+                <div class="code-item">
+                    <input type="text" id="otp4" name="otp4" maxlength="1" class="optinp"
+                        onkeydown="focusOTP(event,'otp3','otp4','otp5')" disabled />
+                </div>
+                <div class="code-item">
+                    <input type="text" id="otp5" name="otp5" maxlength="1" class="optinp"
+                        onkeydown="focusOTP(event,'otp4','otp5','otp6')" disabled />
+                </div>
+                <div class="code-item">
+                    <input type="text" id="otp6" name="otp6" maxlength="1" class="optinp"
+                        oninput="check_and_submit(event)" disabled /><!--focusOTP(event,'otp5','otp6','')-->
+                </div>
+            </div>
+            <div id="otpRespone1" style="text-align: center;color: red;font-weight: 700; margin:2rem auto;">{{response}}</div>
+            <div class="alert-box">            
+                <div class="alert card alert-danger"></div>            
+            </div>
+
+            <div class="button">
+                <div class="resend">
+                    <button type="button" onclick="window.location.href='/transfer'" style="background-color: #ff0000;">Hủy</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

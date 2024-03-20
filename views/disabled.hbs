@@ -1,0 +1,31 @@
+<div class="pending-container" id="pending">
+  <div class="pending-title">
+    <p class="text-title">
+      List Account Disabled
+    </p>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Username</th>
+        <th scope="col">Full name</th>
+        <th scope="col">Phone number</th>
+        <th scope="col">Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each disabledUsers}}
+        <tr>
+          <td>{{this.username}}</td>
+          <td><a
+              href="/admin/userDetail/{{this.username}}"
+            >{{this.fullName}}</a></td>
+          <td>{{this.phoneNumber}}</td>
+          <td>{{this.email}}</td>
+
+        </tr>
+      {{/each}}
+
+    </tbody>
+  </table>
+</div>

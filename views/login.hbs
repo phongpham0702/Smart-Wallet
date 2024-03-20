@@ -1,0 +1,50 @@
+<div class="cont">
+  <div class="demo">
+    <div class="login">
+      <div class="login__form___logo">
+        <img src="/images/logo.png" style="width: 13rem;" />
+      </div>
+      <form method="POST" action="/login" class="login__form" id="login__form">
+        <div class="login__row">
+          
+          <svg class="login__icon name svg-icon" viewBox="0 0 20 20">
+            <path
+              d="M0,20 a10,8 0 0,1 20,0z M10,0 a4,4 0 0,1 0,8 a4,4 0 0,1 0,-8"
+            ></path>
+          </svg>
+          <input
+            name="username"
+            type="text"
+            class="login__input name"
+            placeholder="Username"
+          />
+        </div>
+        <div class="login__row">
+          <svg class="login__icon pass svg-icon" viewBox="0 0 20 20">
+            <path
+              d="M0,20 20,20 20,8 0,8z M10,13 10,16z M4,8 a6,8 0 0,1 12,0"
+            ></path>
+          </svg>
+          <input
+            name="password"
+            type="password"
+            class="login__input pass"
+            placeholder="Password"
+          />
+        </div>
+        <div class="option__row">
+          <a href="/users/forgotpassword">Forgot password ?</a>
+        </div>
+        {{#if message.status}}
+        <div style="color: red; font-weight:600;font-size:20px;padding-top:1.5rem">{{{message.message}}}</div>
+        {{/if}}
+        {{! <button type="submit">Sign in</button> }}
+        <button type="button" class="login__submit">Sign in</button>
+        <p class="login__signup">Don't have an account? &nbsp;<a
+            href="/register"
+          >Sign up</a></p>
+      </form>
+    </div>
+
+  </div>
+</div>

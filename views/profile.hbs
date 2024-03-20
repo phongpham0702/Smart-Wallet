@@ -1,0 +1,67 @@
+<section id="user-profile">
+  <form
+    method="POST"
+    action="/update-info"
+    enctype="multipart/form-data"
+    class="row-user-profile"
+  >
+    <div class="col-left-3">
+      <div class="avatar">
+
+        <img id="avatar" src="/images/user.png" alt="" width="170px " />
+      </div>
+      <p class="name" style="margin-bottom: 1rem;">
+        {{user.fullName}}
+      </p>
+    </div>
+    <div class="col-right-9">
+      <div class="information">
+        <div class="label">
+          <p>Số điện thoại: </p>
+          <p>Email: </p>
+          <p>Địa chỉ: </p>
+          <p>Trạng thái: </p>
+          <p>Ngày sinh: </p>
+        </div>
+        <div class="input">
+          <input
+            disabled
+            type="text"
+            name="phoneNumber"
+            id=""
+            value="{{user.phoneNumber}}"
+          />
+          <input
+            disabled
+            type="text"
+            name="email"
+            id=""
+            value="{{user.email}}"
+          />
+          <input
+            disabled
+            type="text"
+            name="address"
+            id=""
+            value="{{user.address}}"
+          />
+          <input
+            disabled
+            type="text"
+            name="status"
+            id=""
+            value="{{account.status}}"
+          />
+          <input
+            disabled
+            type="text"
+            name="birthDay"
+            id=""
+            value="{{user.dateOfBirth}}"
+          />
+        </div>
+
+      </div>
+    </div>
+  </form>
+</section>

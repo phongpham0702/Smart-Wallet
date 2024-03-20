@@ -1,0 +1,97 @@
+<div id="buyPhoneCardForm" class="container">
+  <form action="/buyPhoneCard" id="userFunctionForm" method="POST">
+    <h2>Mua thẻ điện thoại</h2>
+    <div class="form-content">
+      <div class="user__form__icon">
+        <img src="/images/userFormIcon/buy.png" />
+      </div>
+
+      <h5>Nhà mạng</h5>
+      <hr />
+      <div class="network">
+        <div class="form-group">
+          <label
+            class=""
+            for="viettel"
+            style="background-image: url('/images/network/viettel.png');"
+            onclick="networkClickEffect(this);"
+          ></label>
+          <input type="radio" id="viettel" value="11111" name="network" />
+        </div>
+        <div class="form-group">
+          <label
+            for="mobifone"
+            style="background-image: url('/images/network/mobi.png');"
+            onclick="networkClickEffect(this);"
+          ></label>
+          <input type="radio" id="mobifone" value="22222" name="network" />
+        </div>
+        <div class="form-group">
+          <label
+            for="vinaphone"
+            style="background-image: url('/images/network/vina.png');"
+            onclick="networkClickEffect(this);"
+          ></label>
+          <input type="radio" id="vinaphone" value="33333" name="network" />
+        </div>
+      </div>
+
+      <h5>Mệnh giá</h5>
+      <hr />
+      <div class="denominations">
+        <div class="form-group">
+          <label
+            for="10000"
+            onclick="denominationsClickEffect(this);"
+          >10.000đ</label>
+          <input type="radio" id="10000" value="10000" name="denominations" />
+        </div>
+        <div class="form-group">
+          <label
+            for="20000"
+            onclick="denominationsClickEffect(this);"
+          >20.000đ</label>
+          <input type="radio" id="20000" value="20000" name="denominations" />
+        </div>
+        <div class="form-group">
+          <label
+            for="50000"
+            onclick="denominationsClickEffect(this);"
+          >50.000đ</label>
+          <input type="radio" id="50000" value="50000" name="denominations" />
+        </div>
+        <div class="form-group">
+          <label
+            for="100000"
+            onclick="denominationsClickEffect(this);"
+          >100.000đ</label>
+          <input type="radio" id="100000" value="100000" name="denominations" />
+        </div>
+      </div>
+      <hr style="margin-top: 1.5rem;" />
+      <div class="form-group" style="padding:0 ;">
+        <label for="" style="font-size: 20px; margin-left: 8px">Số lượng:</label>
+        <style
+        >#amount::-webkit-inner-spin-button,#amount::-webkit-outer-spin-button{-webkit-appearance:button;}</style>
+        <input
+          type="number"
+          id="amount"
+          name="amount"
+          min="1"
+          max="5"
+          value="1"
+          style="border: 1px solid #c9c9c9; width:50px;margin-left:8px;padding:8px;"
+        />
+      </div>
+      {{#if error.isError}}
+        <div class="invalid-feedback">{{{error.errorMessage}}}</div>{{/if}}
+      <div class="option">
+        <a href="/" class="btn btn-secondary">Trở lại</a>
+        <button type="submit" class="btn btn-primary">Mua</button>
+      </div>
+
+    </div>
+
+  </form>
+  
+</div>
